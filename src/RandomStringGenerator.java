@@ -3,27 +3,24 @@ import java.util.Random;
 import java.util.UUID;
 
 public class RandomStringGenerator {
-    public void randomUsingPlain(int length) {
-        final Random random = new Random();
-        final byte[] array = new byte[length];
-        random.nextBytes(array);
-        final String generated = new String(array, StandardCharsets.UTF_8);
+        public static void main(String[] args) {
+                final RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+                randomStringGenerator.randomUsingPlain(30);
+                randomStringGenerator.randomUsingStreams(30);
+                randomStringGenerator.randomUsingUuid();
+//        randomStringGenerator.randomUsingCommons(5);
+//        randomStringGenerator.randomUsingCommonsText(5);
 
-        System.out.println(generated);
-    }
+        }
 
-    public void randomUsingStreams(int length) {
-        final int start = '0';
-        final int end = 'z';
-        final Random random = new Random();
-        final String generated = random.ints(start, end + 1)
-                .filter(i -> Character.isLetter(i) || Character.isDigit(i))
-                .limit(length)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
+        public void randomUsingPlain(int length) {
+                final Random random = new Random();
+                final byte[] array = new byte[length];
+                random.nextBytes(array);
+                final String generated = new String(array, StandardCharsets.UTF_8);
 
-        System.out.println(generated);
-    }
+                System.out.println(generated);
+        }
 
 //    public void randomUsingCommons(int length) {
 //        System.out.println(RandomStringUtils.random(length));
@@ -46,17 +43,20 @@ public class RandomStringGenerator {
 //        System.out.println(generatorWithSelection.generate(length));
 //    }
 
-    public void randomUsingUuid() {
-        System.out.println(UUID.randomUUID().toString());
-    }
+        public void randomUsingStreams(int length) {
+                final int start = '0';
+                final int end = 'z';
+                final Random random = new Random();
+                final String generated = random.ints(start, end + 1)
+                    .filter(i -> Character.isLetter(i) || Character.isDigit(i))
+                    .limit(length)
+                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                    .toString();
 
-    public static void main(String[] args) {
-        final RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        randomStringGenerator.randomUsingPlain(30);
-        randomStringGenerator.randomUsingStreams(30);
-        randomStringGenerator.randomUsingUuid();
-//        randomStringGenerator.randomUsingCommons(5);
-//        randomStringGenerator.randomUsingCommonsText(5);
+                System.out.println(generated);
+        }
 
-    }
+        public void randomUsingUuid() {
+                System.out.println(UUID.randomUUID().toString());
+        }
 }

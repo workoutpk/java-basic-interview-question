@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,8 +23,8 @@ public class FlatMapExample {
         // using flatmap() to flatten this list
         List<Integer> flatList
                 = number.stream()
-                .flatMap(list -> list.stream())
-                .collect(Collectors.toList());
+                .flatMap(Collection::stream)
+                .toList();
 
         // printing the list
         System.out.println("List generate by flatMap-"
@@ -47,8 +48,8 @@ public class FlatMapExample {
 
         // Using flatMap for transformation and flattening.
         List<Integer> listofInts  = listOfListofInts.stream()
-                .flatMap(list -> list.stream())
-                .collect(Collectors.toList());
+                .flatMap(Collection::stream)
+                .toList();
 
         System.out.println("The Structure after flattening is : " +
                 listofInts);

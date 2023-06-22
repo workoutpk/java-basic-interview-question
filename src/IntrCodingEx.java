@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 public class IntrCodingEx {
     public static void main(String[] args) {
         String x = "5";
@@ -18,13 +22,14 @@ public class IntrCodingEx {
 
         System.out.println("Loop  on...");
         for (int i=0; i< arrs.length; i++){
-//            System.out.println(arrs[i]);
             if(arrs[i].equals("an")){
                 System.out.println("An are present in array ::");
             }
         }
 
-
+        System.out.println("contains ::: "+s3.contains("an"));
+        //Arrays.sort(arrs,Comparator.reverseOrder());
+        System.out.println("Reverse  ::: " + Arrays.stream(arrs).sorted(Comparator.reverseOrder()).toList());
 
     }
 

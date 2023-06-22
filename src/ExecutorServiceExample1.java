@@ -17,14 +17,12 @@ public class ExecutorServiceExample1 {
             // Override the run method
             public void run()
             {
-                System.out.println(
-                        "This is execute() "
-                                + "method example");
+                System.out.println( "This is execute() " + "method example");
             }
         });
 
         // This method performs all the
-        // previouslu submitted tasks
+        // previous submitted tasks
         // before termination
         executorService.shutdown();
     }

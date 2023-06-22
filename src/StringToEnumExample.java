@@ -1,42 +1,41 @@
-import java.util.stream.Stream;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum StringToEnumExample {
 
-    NORTH("north"),
-    SOUTH("south"),
-    WEST("west"),
-    EAST("east");
-    private final String name;
-    private static Map<String, StringToEnumExample> nameToValue;
-    StringToEnumExample(String name) {
-        this.name = name;
-    }
+        NORTH("north"),
+        SOUTH("south"),
+        WEST("west"),
+        EAST("east");
+        private static Map<String, StringToEnumExample> nameToValue;
+        private final String name;
 
-    public String getName() {
-        return name;
-    }
-
-    public static StringToEnumExample fromValueVersion1(String givenName) {
-        for (StringToEnumExample direction : values()) {
-            if (direction.name.equals(givenName)) {
-                return direction;
-            }
+        StringToEnumExample(String name) {
+                this.name = name;
         }
 
-        return null;
-    }
+        public static StringToEnumExample fromValueVersion1(String givenName) {
+                for (StringToEnumExample direction : values()) {
+                        if (direction.name.equals(givenName)) {
+                                return direction;
+                        }
+                }
 
-    public static StringToEnumExample fromValueVersion2(String givenName) {
-        return Stream.of(values())
-                .filter(direction -> direction.name.equals(givenName))
-                .findFirst()
-                .orElse(null);
-    }
+                return null;
+        }
 
-    public static StringToEnumExample fromValueVersion3(String givenName) {
-        return nameToValue.get(givenName);
-    }
+        public static StringToEnumExample fromValueVersion2(String givenName) {
+                return Stream.of(values())
+                    .filter(direction -> direction.name.equals(givenName))
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public static StringToEnumExample fromValueVersion3(String givenName) {
+                return nameToValue.get(givenName);
+        }
+
+        public String getName() {
+                return name;
+        }
 }

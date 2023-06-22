@@ -16,6 +16,7 @@ public class FindSecondLargestNumberInAnArraysUsingJava8Stream {
                 .get();
 
 
+
         // print sum to console
         System.out.println("\nSecond largest number in an Arrays is - "
                 + secondLargestNumber);
